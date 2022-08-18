@@ -34,17 +34,32 @@ p{
     background-color: black;
     font-size: 1.5rem;
     color: yellow;
+    text-align: center;
 }
 
 main{
     min-width: 500px;
 }
 
+#wrapper-list{
+    display: flex;
+    justify-content: center;
+}
+
 #menu-list{
     border: solid 1px rgb(241, 11, 211);
     list-style-type: none;
     padding: 0px;
+    max-width: 500px;
+    min-width: 500px;
 }
+
+@media (max-width: 600px) {
+    #menu-list{
+        min-width: 0;
+    }
+}
+
 
 .list{
     border: solid 1px rgb(0, 241, 93);
