@@ -67,13 +67,31 @@ function appendList(menuText, i){
             
         })
     })
+    var collapsedDiv = $("<div></div>").addClass("collapse").attr("id", "collapsed-text-"+i);
+    collapsedDiv.text("PROVA PROVA");
     var leftArrow = $("<p></p>").text("⇨").attr("id","left-arrow-"+i).hide();
     var icon = $("<i></i>").addClass(menuText["icon-class"]);
     //var leftArrow = $("<img>").attr("src","./arrow.gif").attr("id","left-arrow-"+i).addClass("arrow-image").hide();
     var text =  $("<p></p>").attr("id","text-menu-"+i).text(menuText.text);
     //var rightArrow = $("<p></p>").text("⇦").attr("id","right-arrow-"+i).hide();
     div.append(leftArrow).append(icon).append(text);
-    li.append(div);
+    li.append(div).append(collapsedDiv);
+    li.attr("data-bs-toggle", "collapse");
+    li.attr("href", "#collapsed-text-"+i);
+    li.attr("aria-expanded", "false");
+    li.attr("aria-controls", "collapsed-text-"+i);
+
+    let targetOfClick;
+    //Onclick to hide all the other
+    li.click((event)=>{
+        targetOfClick = event.currentTarget.id.slice(-1);
+        menuList.forEach((el, i)=>{
+            if(i != idTarget){
+                $("#collapsed-text-"+i).removeClass("show");
+            }
+        })
+    })
+    //<a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
     $("#menu-list").append(li);
 }
 

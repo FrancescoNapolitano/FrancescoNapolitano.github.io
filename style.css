@@ -3,6 +3,10 @@
     cursor:url(./pointer.png), auto;
 }
 
+html, body {
+    min-height: 100%;
+}
+
 body{
     background-color: #7FC6B8;
     min-width: 420px;
