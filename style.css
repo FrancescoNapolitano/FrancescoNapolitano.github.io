@@ -4,16 +4,19 @@
 }
 
 body{
-    margin: 0px;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: #7FC6B8;
+    min-width: 420px;
 }
 
 p{
     font-family: 'Silkscreen';
+}
+
+#main-container{
+    padding-right: 0;
+    padding-left: 0;
+    margin-right: 0;
+    margin-left: 0;
 }
 
 #appearing-name{
@@ -42,15 +45,13 @@ main{
 }
 
 #wrapper-list{
-    display: flex;
-    justify-content: center;
+
 }
 
 #menu-list{
     border: solid 1px rgb(241, 11, 211);
     list-style-type: none;
     padding: 0px;
-    max-width: 500px;
     min-width: 500px;
 }
 
@@ -65,6 +66,7 @@ main{
     border: solid 1px rgb(0, 241, 93);
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .arrow-image{
