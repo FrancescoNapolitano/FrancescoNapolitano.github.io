@@ -44,7 +44,7 @@ function appearingText(text, domId){
 
 function appendList(menuText, i){
     var li = $("<li></li>").attr("id","list-"+i);
-    var div= $("<div></div>").attr("id","div-list-"+i).addClass("list");
+    var div= $("<button></button>").attr("id","div-list-"+i).addClass("list");
     div.hover((eventIn)=>{
         idTarget = eventIn.currentTarget.id.slice(-1);
         //$("#left-arrow-"+idTarget).show();
@@ -68,11 +68,12 @@ function appendList(menuText, i){
         })
     })
     var collapsedDiv = $("<div></div>").addClass("collapse").attr("id", "collapsed-text-"+i);
-    collapsedDiv.text("PROVA PROVA");
+    var textInsideCollapsedDive = $("<p></p>").text("Prova prova");
+    collapsedDiv.append(textInsideCollapsedDive);
     var leftArrow = $("<p></p>").text("⇨").attr("id","left-arrow-"+i).hide();
     var icon = $("<i></i>").addClass(menuText["icon-class"]);
     //var leftArrow = $("<img>").attr("src","./arrow.gif").attr("id","left-arrow-"+i).addClass("arrow-image").hide();
-    var text =  $("<p></p>").attr("id","text-menu-"+i).text(menuText.text);
+    var text =  $("<p></p>").attr("id","text-menu-"+i).text(menuText.text).addClass("list-text");
     //var rightArrow = $("<p></p>").text("⇦").attr("id","right-arrow-"+i).hide();
     div.append(leftArrow).append(icon).append(text);
     li.append(div).append(collapsedDiv);

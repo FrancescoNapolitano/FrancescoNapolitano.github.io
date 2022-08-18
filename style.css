@@ -2,6 +2,12 @@
     box-sizing: border-box;
     cursor:url(./pointer.png), auto;
 }
+@media (prefers-reduced-motion: reduce) {
+    .collapsing {
+        transition-property: height, visibility;
+        transition-duration: .35s;
+    }
+}
 
 html, body {
     min-height: 100%;
@@ -48,15 +54,14 @@ main{
     min-width: 500px;
 }
 
-#wrapper-list{
-
-}
-
 #menu-list{
     border: solid 1px rgb(241, 11, 211);
     list-style-type: none;
     padding: 0px;
     min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media (max-width: 600px) {
@@ -71,6 +76,13 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 15px;
+    min-width: 260px;
+}
+
+.list-text{
+    padding: 0;
+    margin: 0;
 }
 
 .arrow-image{
