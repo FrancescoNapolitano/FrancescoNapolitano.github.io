@@ -44,7 +44,7 @@ function appearingText(text, domId){
 
 function appendList(menuText, i){
     var li = $("<li></li>").attr("id","list-"+i);
-    var div= $("<button></button>").attr("id","div-list-"+i).addClass("list");
+    var div= $("<button></button>").attr("id","div-list-"+i).addClass("list").addClass("button-menu");
     div.hover((eventIn)=>{
         idTarget = eventIn.currentTarget.id.slice(-1);
         //$("#left-arrow-"+idTarget).show();
@@ -64,8 +64,8 @@ function appendList(menuText, i){
     })
     var collapsedDiv = $("<div></div>").addClass("collapse").attr("id", "collapsed-text-"+i);
     var textInsideCollapsedDive = $("<p></p>").text("Prova prova");
-    collapsedDiv.append(textInsideCollapsedDive);
-    var leftArrow = $("<p></p>").text("⇨").attr("id","left-arrow-"+i).hide();
+
+    collapsedDiv.append(textInsideCollapsedDive).append($.parseHTML(skillPage));
     var icon = $("<i></i>").addClass(menuText["icon-class"]);
     var text =  $("<p></p>").attr("id","text-menu-"+i).text(menuText.text).addClass("list-text");
     div.append(icon).append(text);
@@ -82,10 +82,23 @@ function appendList(menuText, i){
         menuList.forEach((el, i)=>{
             if(i != idTarget){
                 $("#collapsed-text-"+i).removeClass("show");
+                if($("#list-"+i).css("display") == "none"){
+                    $("#list-"+i).show();
+                }
+                else{
+                    $("#list-"+i).hide();
+                }
+
             }
         })
     })
     //<a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
     $("#menu-list").append(li);
 }
+
+const skillPage = `
+<div>
+<h3>SKILL PAGE</h3>
+<p>This is a skill page test</p>
+</div>`;
 
