@@ -47,26 +47,30 @@ function appendList(menuText, i){
     var div= $("<button></button>").attr("id","div-list-"+i).addClass("list").addClass("button-menu");
     div.hover((eventIn)=>{
         idTarget = eventIn.currentTarget.id.slice(-1);
-        //$("#left-arrow-"+idTarget).show();
-        $("#right-arrow-"+idTarget).show();
+        $("#div-list-"+idTarget).addClass("border-button-animation");
         $("#text-menu-"+idTarget).addClass("text-menu-animation");
+        $("#icon-"+i).addClass("icon-animation");
+
         menuList.forEach((el, i)=>{
             if(i != idTarget){
+                $("#div-list-"+i).removeClass("border-button-animation");
                 $("#text-menu-"+i).removeClass("text-menu-animation");
+                $("#icon-"+i).removeClass("icon-animation");
             }
         })
     },
     (eventOut)=>{
         menuList.forEach((el, i)=>{
+            $("#div-list-"+i).removeClass("border-button-animation");
             $("#text-menu-"+i).removeClass("text-menu-animation");
-        
+            $("#icon-"+i).removeClass("icon-animation");
         })
     })
     var collapsedDiv = $("<div></div>").addClass("collapse").attr("id", "collapsed-text-"+i);
     var textInsideCollapsedDive = $("<p></p>").text("Prova prova");
 
     collapsedDiv.append(textInsideCollapsedDive).append($.parseHTML(skillPage));
-    var icon = $("<i></i>").addClass(menuText["icon-class"]);
+    var icon = $("<i></i>").addClass(menuText["icon-class"]).addClass("icon").attr("id", "icon-"+i);
     var text =  $("<p></p>").attr("id","text-menu-"+i).text(menuText.text).addClass("list-text");
     div.append(icon).append(text);
     li.append(div).append(collapsedDiv);

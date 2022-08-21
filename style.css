@@ -1,6 +1,5 @@
 *{
     box-sizing: border-box;
-    cursor:url(./pointer.png), auto;
 }
 @media (prefers-reduced-motion: reduce) {
     .collapsing {
@@ -48,9 +47,9 @@ p{
 }
 
 #software-developer{
-    background-color: black;
+    background-color: #000000;
     font-size: 1.5rem;
-    color: yellow;
+    color: #FFFF00;
     text-align: center;
 }
 
@@ -79,6 +78,7 @@ main{
 .list-text{
     padding: 0;
     margin: 0;
+    color: #ffffff;
 }
 
 .text-menu-animation{
@@ -87,9 +87,9 @@ main{
 }
 
 @keyframes color-change {
-    0% { color: rgb(0, 0, 0); }
-    50% { color: rgb(0, 138, 148); }
-    100% { color: rgb(0, 0, 0); }
+    0% { color: #fff; }
+    50% { color: #FFFF00; }
+    100% { color: #fff; }
   }
 
 
@@ -103,13 +103,32 @@ main{
   .pointed{
     width: 7px;
     height: 7px;
-    background-color: white;
+    background-color: #fff;
     border-radius: 50%;
   }
 
   .button-menu{
-    background: brown;
+    background: #009D9E;
     margin-top: 10px;
     border-radius: 15px;
-    border: solid 2px white;
+    border: solid 2px #fff;
+  }
+
+  .icon{
+    color: #fefefe;
+    margin-right: 5px;
+  }
+
+  .icon-animation{
+    animation: color-change 1s infinite;
+  }
+
+  .border-button-animation{
+    animation: border-color-change 1s infinite;
+  }
+
+  @keyframes border-color-change {
+    0% { border: solid 2px #fff; }
+    50% { border: solid 2px #FFFF00; }
+    100% { border: solid 2px #fff; }
   }
