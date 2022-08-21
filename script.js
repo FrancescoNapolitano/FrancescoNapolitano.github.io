@@ -1,19 +1,23 @@
 const menuList = [
     {
         "text":"SKILL",
-        "icon-class":"fa-solid fa-gears"
+        "icon-class":"fa-solid fa-gears",
+        "detail-page": createLevelForSkillPage()
     },
     {
         "text":"WORKING EXPERIENCE",
-        "icon-class":"fa-solid fa-laptop-code"
+        "icon-class":"fa-solid fa-laptop-code",
+        "detail-page": null
     },
     {
         "text":"ABOUT ME",
-        "icon-class":"fa-regular fa-user"
+        "icon-class":"fa-regular fa-user",
+        "detail-page": null
     },
     {
         "text":"CONTACT ME",
-        "icon-class":"fa-solid fa-phone"
+        "icon-class":"fa-solid fa-phone",
+        "detail-page": null
     }];
     
 var idTarget = 0;
@@ -67,12 +71,11 @@ function appendList(menuText, i){
         })
     })
     var collapsedDiv = $("<div></div>").addClass("collapse").attr("id", "collapsed-text-"+i);
-    var textInsideCollapsedDive = $("<p></p>").text("Prova prova");
-
-    collapsedDiv.append(textInsideCollapsedDive).append($.parseHTML(skillPage));
+    collapsedDiv.append($.parseHTML(menuText["detail-page"]));
     var icon = $("<i></i>").addClass(menuText["icon-class"]).addClass("icon").attr("id", "icon-"+i);
     var text =  $("<p></p>").attr("id","text-menu-"+i).text(menuText.text).addClass("list-text");
     div.append(icon).append(text);
+    li.addClass("menu-li");
     li.append(div).append(collapsedDiv);
     li.attr("data-bs-toggle", "collapse");
     li.attr("href", "#collapsed-text-"+i);
@@ -96,13 +99,94 @@ function appendList(menuText, i){
             }
         })
     })
-    //<a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
     $("#menu-list").append(li);
 }
 
-const skillPage = `
-<div>
-<h3>SKILL PAGE</h3>
-<p>This is a skill page test</p>
+function createLevelForSkillPage(){
+    //later i will download this
+    const skillsWithLevel = {
+        "BACKEND":[
+            {
+                "name":"JAVA",
+                "level": "4"
+            },
+            {
+                "name":"SPRINGBOOT",
+                "level": "4"
+            },
+            {
+                "name":"NODEJS",
+                "level": "3"
+            }
+        ],
+        "FRONTEND":[
+            {
+                "name":"JAVASCRIPT",
+                "level": "4"
+            },
+            {
+                "name":"TYPESCRIPT",
+                "level": "2"
+            },
+            {
+                "name":"SVELTE",
+                "level": "3"
+            }
+        ]
+    };
+    const maxLevel = 5;
+
+    let skillPage = `<div class="skill-page">`
+
+    Object.keys(skillsWithLevel).forEach( key => {
+        skillPage = skillPage + `<div>`;
+        console.log(key)
+        skillPage = skillPage + `<p>${key}</p>`;
+        skillsWithLevel[key].forEach( singleSkill => {
+            console.log(singleSkill)
+            let skillName = singleSkill.name;
+            skillPage = skillPage + `<p>${skillName}</p>`;
+            skillPage = skillPage + `<div style="display:flex">`;
+            for( let i = 0; i< singleSkill.level; i++){
+                skillPage = skillPage + `<div style="width: 20px; height: 20px; background-color: black; margin: 1px">
+                </div>`
+            }
+            for( let i = 0; i< ( maxLevel - singleSkill.level ); i++){
+                skillPage = skillPage + `<div style="width: 20px; height: 20px; border: solid 1px black; margin: 1px">
+                </div>`
+            }
+            skillPage = skillPage + `</div>`;
+        })
+        skillPage = skillPage + `</div>`;
+    })
+
+    skillPage = skillPage + "</div>";
+    return skillPage;
+}
+    
+const skillPageOld = `
+<div class="skill-page">
+    <div style="display:flex; flex-direction:column">
+    <p>BACKEND</p>
+    <p>java</p>
+    <div style="display:flex">
+        <div style="width: 20px; height: 20px; background-color: black; margin: 1px">
+        </div>
+        <div style="width: 20px; height: 20px; background-color: black; margin: 1px">
+        </div>
+        <div style="width: 20px; height: 20px; background-color: black; margin: 1px">
+        </div>
+        <div style="width: 20px; height: 20px; background-color: black; margin: 1px">
+        </div>
+        <div style="width: 20px; height: 20px; border: solid 1px black; margin: 1px">
+        </div>
+    </div>
+    </div>
+    <div style="display:flex; flex-direction:column">
+    <p>FRONTEND</p>
+    <p>javascript</p>
+    <p>jquery</p>
+    <p>svelte</p>
+    </div>
 </div>`;
 

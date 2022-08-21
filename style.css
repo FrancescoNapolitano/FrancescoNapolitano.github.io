@@ -1,6 +1,7 @@
 *{
     box-sizing: border-box;
 }
+
 @media (prefers-reduced-motion: reduce) {
     .collapsing {
         transition-property: height, visibility;
@@ -112,6 +113,7 @@ main{
     margin-top: 10px;
     border-radius: 15px;
     border: solid 2px #fff;
+    align-self: center;
   }
 
   .icon{
@@ -132,3 +134,14 @@ main{
     50% { border: solid 2px #FFFF00; }
     100% { border: solid 2px #fff; }
   }
+
+  .menu-li{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .skill-page{
+    display: flex;
+    justify-content: space-evenly;
+    min-width: 100vw;
+}
