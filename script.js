@@ -52,19 +52,14 @@ function appendList(menuText, i){
         $("#text-menu-"+idTarget).addClass("text-menu-animation");
         menuList.forEach((el, i)=>{
             if(i != idTarget){
-                $("#left-arrow-"+i).hide();
-                $("#right-arrow-"+i).hide();
                 $("#text-menu-"+i).removeClass("text-menu-animation");
             }
         })
     },
     (eventOut)=>{
         menuList.forEach((el, i)=>{
-
-                $("#left-arrow-"+i).hide();
-                $("#right-arrow-"+i).hide();
-                $("#text-menu-"+i).removeClass("text-menu-animation");
-            
+            $("#text-menu-"+i).removeClass("text-menu-animation");
+        
         })
     })
     var collapsedDiv = $("<div></div>").addClass("collapse").attr("id", "collapsed-text-"+i);
@@ -72,10 +67,8 @@ function appendList(menuText, i){
     collapsedDiv.append(textInsideCollapsedDive);
     var leftArrow = $("<p></p>").text("⇨").attr("id","left-arrow-"+i).hide();
     var icon = $("<i></i>").addClass(menuText["icon-class"]);
-    //var leftArrow = $("<img>").attr("src","./arrow.gif").attr("id","left-arrow-"+i).addClass("arrow-image").hide();
     var text =  $("<p></p>").attr("id","text-menu-"+i).text(menuText.text).addClass("list-text");
-    //var rightArrow = $("<p></p>").text("⇦").attr("id","right-arrow-"+i).hide();
-    div.append(leftArrow).append(icon).append(text);
+    div.append(icon).append(text);
     li.append(div).append(collapsedDiv);
     li.attr("data-bs-toggle", "collapse");
     li.attr("href", "#collapsed-text-"+i);
