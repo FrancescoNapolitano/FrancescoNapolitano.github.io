@@ -23,11 +23,12 @@ const menuList = [
 var idTarget = 0;
 
 $(document).ready(function(){
-    appearingText("Francesco Napolitano",'#appearing-name');
-    
+    //appearingText("Francesco Napolitano",'#appearing-name');
+    $('#appearing-name').text("Francesco Napolitano");
     menuList.forEach((el,i) => {
         appendList(el, i);
     })
+
 });
 
 
@@ -108,7 +109,8 @@ function createLevelForSkillPage(){
         "BACKEND":[
             {
                 "name":"JAVA",
-                "level": "4"
+                "level": "4",
+                "icon-class":`<i class="fa-brands fa-java"></i>`
             },
             {
                 "name":"SPRINGBOOT",
@@ -116,7 +118,8 @@ function createLevelForSkillPage(){
             },
             {
                 "name":"NODEJS",
-                "level": "3"
+                "level": "3",
+                "icon-class":`<i class="fa-brands fa-node-js"></i>`
             }
         ],
         "FRONTEND":[
@@ -143,16 +146,15 @@ function createLevelForSkillPage(){
         console.log(key)
         skillPage = skillPage + `<p>${key}</p>`;
         skillsWithLevel[key].forEach( singleSkill => {
-            console.log(singleSkill)
             let skillName = singleSkill.name;
-            skillPage = skillPage + `<p>${skillName}</p>`;
+            skillPage = skillPage + `<div style="display:flex"><p>${skillName}</p></div>`;
             skillPage = skillPage + `<div style="display:flex">`;
             for( let i = 0; i< singleSkill.level; i++){
-                skillPage = skillPage + `<div style="width: 20px; height: 20px; background-color: black; margin: 1px">
+                skillPage = skillPage + `<div style="width: 20px; height: 20px; background-color: white; border: solid 2px black; margin: 1px">
                 </div>`
             }
             for( let i = 0; i< ( maxLevel - singleSkill.level ); i++){
-                skillPage = skillPage + `<div style="width: 20px; height: 20px; border: solid 1px black; margin: 1px">
+                skillPage = skillPage + `<div style="width: 20px; height: 20px; border: solid 2px black; margin: 1px">
                 </div>`
             }
             skillPage = skillPage + `</div>`;
@@ -163,30 +165,7 @@ function createLevelForSkillPage(){
     skillPage = skillPage + "</div>";
     return skillPage;
 }
-    
-const skillPageOld = `
-<div class="skill-page">
-    <div style="display:flex; flex-direction:column">
-    <p>BACKEND</p>
-    <p>java</p>
-    <div style="display:flex">
-        <div style="width: 20px; height: 20px; background-color: black; margin: 1px">
-        </div>
-        <div style="width: 20px; height: 20px; background-color: black; margin: 1px">
-        </div>
-        <div style="width: 20px; height: 20px; background-color: black; margin: 1px">
-        </div>
-        <div style="width: 20px; height: 20px; background-color: black; margin: 1px">
-        </div>
-        <div style="width: 20px; height: 20px; border: solid 1px black; margin: 1px">
-        </div>
-    </div>
-    </div>
-    <div style="display:flex; flex-direction:column">
-    <p>FRONTEND</p>
-    <p>javascript</p>
-    <p>jquery</p>
-    <p>svelte</p>
-    </div>
-</div>`;
+
+
+
 

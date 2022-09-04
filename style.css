@@ -31,6 +31,7 @@ p{
     padding-left: 0;
     margin-right: 0;
     margin-left: 0;
+    height: 100vh;
 }
 
 #appearing-name{
@@ -38,6 +39,7 @@ p{
     color: #E8A87C;
     text-shadow: 0 1px 0px #378ab4, 1px 0 0px #5dabcd, 1px 2px 1px #378ab4, 2px 1px 1px #5dabcd, 2px 3px 2px #378ab4, 3px 2px 2px #5dabcd, 3px 4px 2px #378ab4, 4px 3px 3px #5dabcd, 4px 5px 3px #378ab4, 5px 4px 2px #5dabcd, 5px 6px 2px #378ab4, 6px 5px 2px #5dabcd, 6px 7px 1px #378ab4, 7px 6px 1px #5dabcd, 7px 8px 0px #378ab4, 8px 7px 0px #5dabcd;
     margin-bottom: 10px;
+    animation: animation-name-text 1s ease 0s 1 normal forwards;
 }
 
 #wrapper-appearing-name{
@@ -45,6 +47,53 @@ p{
     min-width: 100vw;
     text-align: center;
     background: #FAC2C1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes animation-name-text {
+	0% {
+		animation-timing-function: ease-in;
+		opacity: 0;
+		transform: translateY(-250px);
+	}
+
+	38% {
+		animation-timing-function: ease-out;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	55% {
+		animation-timing-function: ease-in;
+		transform: translateY(-65px);
+	}
+
+	72% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+
+	81% {
+		animation-timing-function: ease-in;
+		transform: translateY(-28px);
+	}
+
+	90% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
+
+	95% {
+		animation-timing-function: ease-in;
+		transform: translateY(-8px);
+	}
+
+	100% {
+		animation-timing-function: ease-out;
+		transform: translateY(0);
+	}
 }
 
 #software-developer{
@@ -143,5 +192,11 @@ main{
   .skill-page{
     display: flex;
     justify-content: space-evenly;
-    min-width: 100vw;
+    min-width: 80vw;
+    margin-top: 30px;
+    background: #009D9E;
+    border: solid 2px white;
+    color: white;
+    padding: 10px;
+    border-radius: 25px;
 }
