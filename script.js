@@ -17,7 +17,7 @@ const menuList = [
     {
         "text":"CONTACT ME",
         "icon-class":"fa-solid fa-phone",
-        "detail-page": null
+        "detail-page": contactMePage()
     }];
     
 var idTarget = 0;
@@ -28,9 +28,21 @@ $(document).ready(function(){
     menuList.forEach((el,i) => {
         appendList(el, i);
     })
-
 });
 
+function contactMePage(){
+    var numeroDiTelefono = "+39 3391056810";
+    var email = "francesco.napolitano117@gmail.com"; 
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    console.log(date);
+    let contactMePage = `<div id="contact-me-page" class="contact-page row">`
+
+    contactMePage = contactMePage + `<div><p>Mobile phone : ${numeroDiTelefono}</p></div>`
+    contactMePage = contactMePage + `<div><p>Email : <a id="my-email" href="mailto:francesco.napolitano117@gmail.com">${email}</p></a></div>`
+    contactMePage = contactMePage + "</div>"
+    return contactMePage;
+}
 
 function appearingText(text, domId){
     var code = text.split("");
@@ -106,46 +118,69 @@ function appendList(menuText, i){
 function createLevelForSkillPage(){
     //later i will download this
     const skillsWithLevel = {
-        "BACKEND":[
-            {
-                "name":"JAVA",
-                "level": "4",
-                "icon-class":`<i class="fa-brands fa-java"></i>`
+        "BACKEND":{
+            skill:[
+                {
+                    "name":"JAVA",
+                    "level": "4",
+                    "icon-class":`<i class="fa-brands fa-java"></i>`
+                },
+                {
+                    "name":"SPRINGBOOT",
+                    "level": "4"
+                },
+                {
+                    "name":"NODEJS",
+                    "level": "3",
+                    "icon-class":`<i class="fa-brands fa-node-js"></i>`
+                }
+            ],
+            class:"col-sm-6 col-md-4"
+        },
+        "FRONTEND":{
+            skill:[
+                {
+                    "name":"JAVASCRIPT",
+                    "level": "4"
+                },
+                {
+                    "name":"TYPESCRIPT",
+                    "level": "2"
+                },
+                {
+                    "name":"SVELTE",
+                    "level": "3"
+                }
+            ],
+            "class":"col-sm-6 col-md-4"
+        },
+        "BASIC KNOWLEDGE":{
+            skill:[            {
+                "name":"DOCKER"
             },
             {
-                "name":"SPRINGBOOT",
-                "level": "4"
+                "name":"ANGULAR"
             },
             {
-                "name":"NODEJS",
-                "level": "3",
-                "icon-class":`<i class="fa-brands fa-node-js"></i>`
-            }
-        ],
-        "FRONTEND":[
-            {
-                "name":"JAVASCRIPT",
-                "level": "4"
+                "name":"MONGO DB"
             },
             {
-                "name":"TYPESCRIPT",
-                "level": "2"
+                "name":"SQL"
             },
             {
-                "name":"SVELTE",
-                "level": "3"
-            }
-        ]
+                "name":"KAFKA"
+            }],
+            "class":"col-12 col-md-4"
+        }
     };
     const maxLevel = 5;
 
-    let skillPage = `<div class="skill-page">`
+    let skillPage = `<div class="skill-page row">`
 
     Object.keys(skillsWithLevel).forEach( key => {
-        skillPage = skillPage + `<div>`;
-        console.log(key)
+        skillPage = skillPage + `<div class="skill-page-section ${skillsWithLevel[key].class}">`;
         skillPage = skillPage + `<p>${key}</p>`;
-        skillsWithLevel[key].forEach( singleSkill => {
+        skillsWithLevel[key].skill.forEach( singleSkill => {
             let skillName = singleSkill.name;
             skillPage = skillPage + `<div style="display:flex"><p>${skillName}</p></div>`;
             skillPage = skillPage + `<div style="display:flex">`;
